@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tracking Order | CleanLaundry</title>
+    <!-- Stylesheets -->
+    <link href="css/style.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" id="jssDefault" href="css/custom/theme-2.css"/>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+
+<!-- page wrapper -->
+<body class="boxed_wrapper">
+    
+    <!-- main header area -->
+    <header class="main-header">
+
+        <!-- header lower/fixed-header -->   
+
+        <div class="theme_menu stricky header-lower">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="logo-box">
+                            <a href="index1.html"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-12 col-xs-12">
+                        <div class="menu-bar">
+                            <nav class="main-menu">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
+                                        <li class="current"><a href="index1.html">Home</a></li>
+                                        <li class="next"><a href="about.html">About</a></li>
+                                            <li class="dropdown"><a href="#">Services</a>
+                                            <ul class="submenu">
+                                                <li><a href="service.html">Our Services</a></li>
+                                                <li><a href="service-details.html">Service Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="next"><a href="checkout.html">Checkout Order</a></li>
+                                        <li class="next" ><a href="blog-details.html">Blog</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                    </ul>                            
+                                </div>
+                            </nav>
+                            <div class="cart-box">
+                                <a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Your Cart(0)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end header lower/fixed-header -->
+
+    </header>
+    <div class = content_body>
+
+        <div class ="secondhead">
+            <div class = "userdp"><img src = "Images/Avatar.png" width = 150px ></div>
+            <br><br><br>
+            <ul>
+                <li class = "username"> Hello Micheal Aspinwall</li><br>
+                <li class = "usernav"><a class="an" href = "Property manager.html">Dashboard </a></li>
+                <li class = "usernav"><a class="an" href = "Tenants.html">Order Info </a></li>
+                <li class = "usernav"><a class="an" href = "#">Payments </a></li>
+                <li class = "usernav"><a class="an" href = "Messages.html">Messages </a></li>
+                <li class = "usernav"><a class="an" href = "Listing.html">Delivery Info </a></li>
+                <hr>
+        </div>
+
+        <div class ="container1">
+            <div class ="navbtn2">
+                <h1>Payments Details</h1><br>
+                <button style="width: 120px; height: 30px;"><a class="am" href = "Listing_Form.html">Add New </a></button>
+                <button style="width: 120px; height: 30px;"><a class="am" href = "#">Report </a></button>
+            </div>
+            <br>
+            <div class = "listingtable">                
+                    <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>First Name</th>
+                            <th>Service Category</th>
+                            <th>Amount</th>
+                            <th>Number</th>
+                            <th>Pay Method</th>
+                            <th>Pending Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($contact_agent_info as $row): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['Tenant_ID']); ?></td>
+                            <td><?php echo htmlspecialchars($row['first_name']); ?></td>
+                            <td><?php echo htmlspecialchars($row['last_name']); ?></td>
+                            <td><?php echo htmlspecialchars($row['gender']); ?></td>
+                            <td><?php echo htmlspecialchars($row['number']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['NIC']); ?></td>
+                            <td><?php echo htmlspecialchars($row['No_of_pets']); ?></td>
+                            <td><?php echo htmlspecialchars($row['Payments']); ?></td>
+                            <td><?php echo htmlspecialchars($row['Income']); ?></td>
+                            <td><?php echo htmlspecialchars($row['time_to_contact']); ?></td>
+                            <td><?php echo htmlspecialchars($row['time_to_contact']); ?></td>
+                            
+                        <td class = "crud_bttn">
+                            <form action="Tenant_server.php" method="post">
+                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>"/>
+                            <input class = "crud_bttn" style="width: 80px; height: 30px;" type="submit" name="delete" value="Delete"/>
+                            </form>
+                        </td>
+                        <td >
+                            <form action="Update_Tenant_Details.php" method="get">
+                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>"/>
+                            <input class = "crud_bttn" style="width: 80px; height: 30px;"  type="submit" value="Edit"/>
+                            </form>
+                        </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                    </table></div>
+    
+    
+    
+    
+    
+        </div>
+
+
+
+
+
+    
+    
+    
+    
+    
+    </div>
+       
+    
+    <!-- main footer area -->
+    <footer class="footer-area" style="background-image: url(images/home/footer.png);">
+        <div class="subscribe-section">
+            <div class="container">
+                <div class="subscribe-content">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-xs-12 footer-column">
+                            <div class="top-title"><h3>Subscribe <br /> Our Newsletter</h3></div>
+                        </div>
+                        <div class="col-md-9 col-sm-8 col-xs-12 footer-column">
+                            <div class="footr-form">
+                                <form action="#" method="Post">
+                                    <div class="form-group">
+                                        <input type="text" name="name" placeholder="Your Name" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="email" placeholder="Your Email" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn-one">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="main-footer">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12 footer-column">
+                        <div class="logo-wideget footer-wideget">
+                            <div class="footer-logo">
+                                <a href="index1.html"></a>
+                            </div>
+                            <div class="text">
+                                <p>Lorem ipsum dolor amet consectetur adipisicing elit sed eiusm tempor incididunt ut labore dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullam
+                                aboris nisi ut aliquip.</p>
+                            </div>
+                            <ul class="footer-social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-6 col-xs-12 footer-column">
+                        <div class="service-wideget footer-wideget">
+                            <div class="footer-title"><h3>Services</h3></div>
+                            <ul class="list">
+                                <li><a href="#">Company History</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 footer-column">
+                        <div class="link-wideget footer-wideget">
+                            <div class="footer-title"><h3>Quick Link</h3></div>
+                            <ul class="list">
+                                <li><a href="#">Company History</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 footer-column">
+                        <div class="contact-wideget footer-wideget">
+                            <div class="footer-title"><h3>Contact</h3></div>
+                            <div class="widget-content">
+                                <div class="text">
+                                    <p>Excepteur sint occaecat cupidat non proident sunt.</p>
+                                </div>
+                                <ul class="contact-info">
+                                    <li><i class="icon fa fa-map-marker"></i>184 Main Rd E, St Albans VIC <br />3021, Australia</li>
+                                    <li><i class="icon fa fa-phone"></i>+22 657 325 413</li>
+                                    <li><i class="icon fa fa-envelope"></i>info@sharpes.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-bottom centred">
+                <div class="copyright"><a href="#">Sharpes</a> © 2018 All Right Reserved</div>
+            </div>
+        </div>
+    </footer>
+    <!-- main footer area -->
+
+</body>
+</html>

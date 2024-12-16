@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Querys>
+
+	
+	<query id="create_service_booking_table">
+        <![CDATA[
+            CREATE TABLE Service_booking (
+		    id VARCHAR(100) PRIMARY KEY, 
+		    services SET('wash', 'drycleaning', 'ironing') NOT NULL, 
+		    stain_removal ENUM('yes', 'no') DEFAULT 'no', 
+		    clothes_collection ENUM('pickup', 'dropoff') NOT NULL, 
+		    collection_drop_off_time DATETIME NOT NULL, 
+		    delivery_method ENUM('pickup', 'delivery') NOT NULL, 
+		    delivery_duration INT NOT NULL, 
+		    pick_or_delivery_address VARCHAR(255) NOT NULL, 
+		    payment_options ENUM('pay_at_counter', 'cash_on_delivery', 'card_payment') NOT NULL, 
+		    requirements TEXT,
+		    userId INT, 
+		    FOREIGN KEY (userId) REFERENCES users(id)
+		);
+
+        ]]>
+	</query>
+	
+<!-- 	<query id="create_order_status_table">
+		<![CDATA[
+			CREATE TABLE Order_status (
+    		id INT PRIMARY KEY,
+    		status ENUM('pending', 'approved', 'rejected') NOT NULL DEFAULT 'pending',
+   			FOREIGN KEY (id) REFERENCES Service_booking(id));
+		]]>
+	</query>
+-->
+	
+	<query id="drop_table">
+         <![CDATA[        
+            DROP TABLE IF EXISTS Service_booking 
+        ]]>
+	</query>
+
+	
+	<query id="insert_service_booking">
+        <![CDATA[
+          	INSERT INTO Service_booking (
+          	 id,
+          	 services, 
+          	 stain_removal, 
+          	 clothes_collection, 
+          	 collection_drop_off_time, 
+          	 delivery_method, 
+          	 delivery_duration, 
+          	 pick_or_delivery_address, 
+          	 payment_options, 
+          	 requirements)
+			VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ]]>
+	</query>
+
+<!-- 	<query id="insert_Order_status">
+        <![CDATA[
+          	INSERT INTO Order_status (id) VALUES (1);
+
+        ]]>
+	</query>
+-->	
+	<query id="order_by_id">
+         <![CDATA[        
+            select * from Service_booking where Service_booking.id = ?
+        ]]>
+	</query>
+
+	
+	<query id="all_orders">
+         <![CDATA[        
+            select * from Service_booking
+        ]]>
+	</query>
+
+	
+	<query id="remove_order">
+         <![CDATA[        
+            delete from Service_booking where Service_booking.id = ?
+        ]]>
+	</query>
+	
+	
+	<query id="update_order">
+        <![CDATA[        
+            UPDATE Service_booking as o
+            SET 
+                o.services = ?,
+                o.stain_removal = ?, 
+                o.clothes_collection = ?, 
+                o.collection_drop_off_time = ?, 
+                o.delivery_method = ?, 
+                o.delivery_duration = ?, 
+                o.pick_or_delivery_address = ?, 
+                o.payment_options = ?, 
+                o.requirements = ?
+            WHERE o.id = ?
+        ]]>
+    </query>
+	
+		
+	<query id="order_ids">
+         <![CDATA[        
+            select o.id from Service_booking as o
+        ]]>
+	</query>
+	
+<!-- 	<query id="approve_order">
+		<![CDATA[
+			UPDATE Order_status SET status = 'approved' WHERE id = ?
+		]]>
+	</query>
+	
+-->			
+	<query id="get_user_by_username">
+		 <![CDATA[        
+			select * from users where users.name = ?
+		]]>
+	</query>
+
+</Querys>
